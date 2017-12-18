@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		504AE33B1FE80D65007B9677 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504AE33A1FE80D65007B9677 /* AppDelegate.swift */; };
-		504AE33D1FE80D65007B9677 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504AE33C1FE80D65007B9677 /* ViewController.swift */; };
 		504AE3401FE80D65007B9677 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504AE33E1FE80D65007B9677 /* Main.storyboard */; };
 		504AE3431FE80D65007B9677 /* PetSaver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 504AE3411FE80D65007B9677 /* PetSaver.xcdatamodeld */; };
 		504AE3451FE80D65007B9677 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504AE3441FE80D65007B9677 /* Assets.xcassets */; };
 		504AE3481FE80D65007B9677 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504AE3461FE80D65007B9677 /* LaunchScreen.storyboard */; };
+		504AE3501FE82FAA007B9677 /* PetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504AE34F1FE82FAA007B9677 /* PetsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		504AE3371FE80D65007B9677 /* PetSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504AE33A1FE80D65007B9677 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		504AE33C1FE80D65007B9677 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		504AE33F1FE80D65007B9677 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		504AE3421FE80D65007B9677 /* PetSaver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PetSaver.xcdatamodel; sourceTree = "<group>"; };
 		504AE3441FE80D65007B9677 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		504AE3471FE80D65007B9677 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		504AE3491FE80D65007B9677 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		504AE34F1FE82FAA007B9677 /* PetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,55 @@
 		504AE3391FE80D65007B9677 /* PetSaver */ = {
 			isa = PBXGroup;
 			children = (
-				504AE33A1FE80D65007B9677 /* AppDelegate.swift */,
-				504AE33C1FE80D65007B9677 /* ViewController.swift */,
-				504AE33E1FE80D65007B9677 /* Main.storyboard */,
-				504AE3441FE80D65007B9677 /* Assets.xcassets */,
-				504AE3461FE80D65007B9677 /* LaunchScreen.storyboard */,
+				504AE3551FE82FF9007B9677 /* Storyboards */,
+				504AE3541FE82FDB007B9677 /* Resources */,
+				504AE3531FE82FD3007B9677 /* Model */,
+				504AE3521FE82FCC007B9677 /* View */,
+				504AE3511FE82FC4007B9677 /* Controller */,
 				504AE3491FE80D65007B9677 /* Info.plist */,
 				504AE3411FE80D65007B9677 /* PetSaver.xcdatamodeld */,
 			);
 			path = PetSaver;
+			sourceTree = "<group>";
+		};
+		504AE3511FE82FC4007B9677 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				504AE33A1FE80D65007B9677 /* AppDelegate.swift */,
+				504AE34F1FE82FAA007B9677 /* PetsVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		504AE3521FE82FCC007B9677 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		504AE3531FE82FD3007B9677 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		504AE3541FE82FDB007B9677 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				504AE3441FE80D65007B9677 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		504AE3551FE82FF9007B9677 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				504AE3461FE80D65007B9677 /* LaunchScreen.storyboard */,
+				504AE33E1FE80D65007B9677 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +180,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				504AE3431FE80D65007B9677 /* PetSaver.xcdatamodeld in Sources */,
-				504AE33D1FE80D65007B9677 /* ViewController.swift in Sources */,
 				504AE33B1FE80D65007B9677 /* AppDelegate.swift in Sources */,
+				504AE3501FE82FAA007B9677 /* PetsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
