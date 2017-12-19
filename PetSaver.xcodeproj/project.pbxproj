@@ -13,6 +13,7 @@
 		504AE3451FE80D65007B9677 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504AE3441FE80D65007B9677 /* Assets.xcassets */; };
 		504AE3481FE80D65007B9677 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504AE3461FE80D65007B9677 /* LaunchScreen.storyboard */; };
 		504AE3501FE82FAA007B9677 /* PetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504AE34F1FE82FAA007B9677 /* PetsVC.swift */; };
+		50D161261FE99FED00DE6122 /* PetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D161251FE99FED00DE6122 /* PetCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		504AE3471FE80D65007B9677 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		504AE3491FE80D65007B9677 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		504AE34F1FE82FAA007B9677 /* PetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsVC.swift; sourceTree = "<group>"; };
+		50D161251FE99FED00DE6122 /* PetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			children = (
 				504AE33A1FE80D65007B9677 /* AppDelegate.swift */,
 				504AE34F1FE82FAA007B9677 /* PetsVC.swift */,
+				50D161251FE99FED00DE6122 /* PetCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				504AE3431FE80D65007B9677 /* PetSaver.xcdatamodeld in Sources */,
+				50D161261FE99FED00DE6122 /* PetCell.swift in Sources */,
 				504AE33B1FE80D65007B9677 /* AppDelegate.swift in Sources */,
 				504AE3501FE82FAA007B9677 /* PetsVC.swift in Sources */,
 			);
