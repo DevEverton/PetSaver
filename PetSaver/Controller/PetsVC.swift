@@ -11,11 +11,19 @@ import UIKit
 private let cellIdentifier = "petCell"
 
 class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
+    @IBOutlet weak var topView: UIView!
+    
+    @IBOutlet weak var topViewHeighConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.removeTabbarItemsText()
 
     }
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -39,12 +47,34 @@ class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
         return petCell
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0.5) {
+            self.topViewHeighConstraint.constant = 35
+            self.titleLabel.textAlignment = .center
+            self.titleLabel.frame = CGRect(x: 5, y: 5, width: self.topView.frame.width, height: self.topView.frame.height)
+            self.titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        }
+
+    }
+    
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0.5) {
+            self.topViewHeighConstraint.constant = 70
+            self.titleLabel.textAlignment = .left
+            self.titleLabel.frame = CGRect(x: 5, y: 5, width: self.topView.frame.width, height: self.topView.frame.height)
+        }
+    }
+    
+
+
 
 }
 
 extension PetsVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         return CGSize(width: view.frame.width, height: view.frame.height - 150)
     }
     
@@ -64,6 +94,19 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return result!
     }
+}
+
+extension UIViewController {
+    
+    func removeTabbarItemsText() {
+        if let items = tabBarController?.tabBar.items {
+            for item in items {
+                item.title = ""
+                item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+            }
+        }
+    }
+    
 }
 
 
