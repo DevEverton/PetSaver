@@ -13,9 +13,11 @@ private let cellIdentifier = "petCell"
 class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var topView: UIView!
-    
     @IBOutlet weak var topViewHeighConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
+    
+    var lastContentOffset: CGFloat = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,7 @@ class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         self.removeTabbarItemsText()
 
     }
-    
+
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -47,24 +49,35 @@ class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
         return petCell
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        UIView.animate(withDuration: 0.5) {
-            self.topViewHeighConstraint.constant = 35
-            self.titleLabel.textAlignment = .center
-            self.titleLabel.frame = CGRect(x: 5, y: 5, width: self.topView.frame.width, height: self.topView.frame.height)
-            self.titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        }
+ 
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
 
-    }
-    
-    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        UIView.animate(withDuration: 0.5) {
-            self.topViewHeighConstraint.constant = 70
-            self.titleLabel.textAlignment = .left
-            self.titleLabel.frame = CGRect(x: 5, y: 5, width: self.topView.frame.width, height: self.topView.frame.height)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (self.lastContentOffset < scrollView.contentOffset.y) {
+            // moved to top
+            UIView.animate(withDuration: 0.5, animations: {
+                self.topViewHeighConstraint.constant = 20
+                self.titleLabel.text = ""
+                self.view.layoutIfNeeded()
+            })
+        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+            // moved to bottom
+            UIView.animate(withDuration: 0.5, animations: {
+                self.topViewHeighConstraint.constant = 70
+                self.titleLabel.text = "Buscar"
+                self.view.layoutIfNeeded()
+
+            })
+            
+        } else {
+            // didn't move
         }
     }
+
+
+
     
 
 
