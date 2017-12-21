@@ -15,5 +15,6 @@ class PetCell: UICollectionViewCell {
     @IBOutlet weak var userProfilePicture: UIImageView!
     @IBOutlet weak var petPicture: UIImageView!
     @IBOutlet weak var petDescription: UILabel!
+    @IBOutlet weak var date: UILabel!
     
 }

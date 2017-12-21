@@ -45,6 +45,7 @@ class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         petCell.userProfilePicture.image = #imageLiteral(resourceName: "perfilCarla").circle
         petCell.petPicture.image = #imageLiteral(resourceName: "gato")
         petCell.petDescription.text = "Gatinhos para adoção, bairro União"
+        petCell.date.text = "22/12/2017"
         
 
         return petCell
@@ -77,12 +78,10 @@ class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
 
 
-
-    
-
-
-
 }
+
+//TODO: Fix autolayout of topbar and tabBar for iPhone X
+
 
 extension PetsVC: UICollectionViewDelegateFlowLayout {
     
