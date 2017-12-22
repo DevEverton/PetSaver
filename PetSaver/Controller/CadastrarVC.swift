@@ -26,7 +26,7 @@ class CadastrarVC: UIViewController, UITextViewDelegate {
     }
     
     func setupTextView(){
-        descriptionTextView.layer.cornerRadius = 8
+ //       descriptionTextView.layer.cornerRadius = 8
         descriptionTextView.text = "Breve descrição sobre o pet"
         descriptionTextView.textColor = .lightGray
     }
@@ -34,23 +34,15 @@ class CadastrarVC: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         descriptionTextView.text = textViewinputText
         descriptionTextView.textColor = .black
-        UIView.animate(withDuration: 0.3) {
-            self.textViewTopConstraint.constant = 38
-            self.view.layoutIfNeeded()
-        }
+
     }
     
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()
-            UIView.animate(withDuration: 0.3) {
-                self.view.endEditing(true)
-                self.textViewTopConstraint.constant = 80
-                self.view.layoutIfNeeded()
-                self.textViewinputText = self.descriptionTextView.text
+            textViewinputText = descriptionTextView.text
 
-            }
             return false
         }
         return true
