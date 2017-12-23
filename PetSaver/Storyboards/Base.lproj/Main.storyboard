@@ -222,7 +222,7 @@
                                                                     <constraint firstAttribute="height" constant="30" id="qex-Zy-vzN"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tipo (Gato, Cachoro, Passaro...)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IAg-r2-TTr">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tipo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IAg-r2-TTr">
                                                                 <rect key="frame" x="34" y="0.0" width="270" height="30"/>
                                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
@@ -391,7 +391,11 @@
                     <size key="freeformSize" width="320" height="800"/>
                     <connections>
                         <outlet property="descriptionTextView" destination="4lD-Wg-ze8" id="eT4-AP-imA"/>
+                        <outlet property="generoTextField" destination="7NB-97-PRR" id="ANc-v8-dbN"/>
+                        <outlet property="idadeTextField" destination="BCE-Pt-sR6" id="2tW-rs-Sf2"/>
                         <outlet property="petImage" destination="G6J-eR-RmL" id="bdi-tZ-yDn"/>
+                        <outlet property="porteTextField" destination="mqH-HK-wvf" id="bsk-dK-oi6"/>
+                        <outlet property="tipoTextField" destination="IAg-r2-TTr" id="AuO-Tx-mlt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QL3-16-OKP" userLabel="First Responder" sceneMemberID="firstResponder"/>

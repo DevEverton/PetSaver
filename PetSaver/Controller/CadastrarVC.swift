@@ -8,13 +8,26 @@
 
 import UIKit
 
-class CadastrarVC: UIViewController, UITextViewDelegate {
+class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var textViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tipoTextField: UITextField!
+    @IBOutlet weak var generoTextField: UITextField!
+    @IBOutlet weak var porteTextField: UITextField!
+    @IBOutlet weak var idadeTextField: UITextField!
+    
     
     var textViewinputText = ""
+    var tipoPicker = UIPickerView()
+    var generoPicker = UIPickerView()
+    var portePicker = UIPickerView()
+    var idadePicker = UIPickerView()
+    
+    let tipo = ["Cão", "Gato"]
+    let genero = ["Macho", "Fêmea"]
+    let porte = ["Pequeno", "Médio", "Grande"]
+    let idade = ["De 0 a 3 meses", "De 3 a 6 meses", "De 6 meses a 1 ano", "Mais de 1 ano"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +35,34 @@ class CadastrarVC: UIViewController, UITextViewDelegate {
         self.removeTabbarItemsText()
         setupTextView()
         
+        pickerViewDelegate(tipoPicker)
+        pickerViewDelegate(generoPicker)
+        pickerViewDelegate(portePicker)
+        pickerViewDelegate(idadePicker)
+        
+        tipoTextField.inputView = tipoPicker
+        generoTextField.inputView = generoPicker
+        porteTextField.inputView = portePicker
+        idadeTextField.inputView = idadePicker
+        
+        changeColor(of: tipoPicker, to: .white)
+        changeColor(of: generoPicker, to: .white)
+        changeColor(of: portePicker, to: .white)
+        changeColor(of: idadePicker, to: .white)
+
+    }
+    
+    func changeColor(of pickerView: UIPickerView, to color: UIColor) {
+        pickerView.backgroundColor = color
         
     }
     
+    func pickerViewDelegate(_ pickerView: UIPickerView){
+        pickerView.dataSource = self
+        pickerView.delegate =  self
+    }
+    
     func setupTextView(){
- //       descriptionTextView.layer.cornerRadius = 8
         descriptionTextView.text = "Breve descrição sobre o pet"
         descriptionTextView.textColor = .lightGray
     }
@@ -42,14 +78,71 @@ class CadastrarVC: UIViewController, UITextViewDelegate {
         if(text == "\n") {
             textView.resignFirstResponder()
             textViewinputText = descriptionTextView.text
-
             return false
         }
         return true
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        switch pickerView {
+        case tipoPicker:
+            return tipo.count
+        case generoPicker:
+            return genero.count
+        case portePicker:
+            return porte.count
+        case idadePicker:
+            return idade.count
+        default:
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        switch pickerView {
+        case tipoPicker:
+            return tipo[row]
+        case generoPicker:
+            return genero[row]
+        case portePicker:
+            return porte[row]
+        case idadePicker:
+            return idade[row]
+        default:
+            return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        switch pickerView {
+        case tipoPicker:
+            tipoTextField.text = tipo[row]
+        case generoPicker:
+            generoTextField.text = genero[row]
+        case portePicker:
+            porteTextField.text = porte[row]
+        case idadePicker:
+            idadeTextField.text = idade[row]
+        default:
+            break
+        }
+        
+        self.view.endEditing(false)
+
+    }
+    
+
     @IBAction func addPicture(_ sender: Any) {
     }
     
