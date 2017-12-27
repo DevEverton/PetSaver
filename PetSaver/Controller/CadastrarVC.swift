@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var petImage: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -75,6 +75,8 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
         descriptionTextView.text = "Breve descrição sobre o pet"
         descriptionTextView.textColor = .lightGray
     }
+    
+    //MARK: - TextView properties
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         descriptionTextView.text = textViewinputText
@@ -95,6 +97,8 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    //MARK: - ScrollView animation
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.lastContentOffset = scrollView.contentOffset.y
@@ -123,6 +127,8 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
             // didn't move
         }
     }
+    
+    //MARK: PickerView delegate methods
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -174,13 +180,49 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
         default:
             break
         }
-        
         self.view.endEditing(false)
-
     }
     
+    
+    //MARK: addPicture button
 
     @IBAction func addPicture(_ sender: Any) {
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Carregar Imagem", message: "", preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = UIColor(red:0.95, green:0.51, blue:0.51, alpha:1.0)
+        
+        actionSheet.addAction(UIAlertAction(title: "Câmera", style: .default, handler: { (action: UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Rolo da câmera", style: .default, handler: { (action: UIAlertAction) in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+        
+    }
+    
+    //MARK: ImagePicker delegate methods
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        petImage.image = image
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func registerPet(_ sender: Any) {
@@ -188,3 +230,12 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
     
 
 }
+
+
+
+
+
+
+
+
+
