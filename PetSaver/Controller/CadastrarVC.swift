@@ -40,6 +40,7 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
         self.removeTabbarItemsText()
         setupTextView()
         setUpPickerViews()
+        
 
     }
 
@@ -224,12 +225,12 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
         picker.dismiss(animated: true, completion: nil)
 
     }
-    
+
     @IBAction func registerPet(_ sender: Any) {
     }
-    
 
 }
+
 
 
 

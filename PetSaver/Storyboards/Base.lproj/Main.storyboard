@@ -177,7 +177,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4HD-Ec-7eR">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="petPlaceholderPic" translatesAutoresizingMaskIntoConstraints="NO" id="G6J-eR-RmL">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="petPlaceholderPic" translatesAutoresizingMaskIntoConstraints="NO" id="G6J-eR-RmL">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="G6J-eR-RmL" secondAttribute="height" multiplier="32:15" id="2mT-EZ-8Xt"/>
