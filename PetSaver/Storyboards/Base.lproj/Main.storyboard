@@ -156,7 +156,7 @@
                     <connections>
                         <outlet property="titleLabel" destination="vPl-HR-AGv" id="ctw-TS-BwU"/>
                         <outlet property="topView" destination="x2H-Aa-MOy" id="m4r-xc-krG"/>
-                        <outlet property="topViewHeighConstraint" destination="nZX-YW-9ee" id="Pql-37-6W2"/>
+                        <outlet property="topViewHeightConstraint" destination="nZX-YW-9ee" id="Gd0-zc-H6J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3mj-ue-vHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -353,6 +353,9 @@
                                     <constraint firstAttribute="trailing" secondItem="4HD-Ec-7eR" secondAttribute="trailing" id="tCQ-2j-fGm"/>
                                     <constraint firstItem="4HD-Ec-7eR" firstAttribute="top" secondItem="mOf-mA-BZ3" secondAttribute="top" id="zOh-zO-3Gx"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="UVc-hd-crE" id="T4D-El-XzT"/>
+                                </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8yO-Zk-mxR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
@@ -395,7 +398,10 @@
                         <outlet property="idadeTextField" destination="BCE-Pt-sR6" id="2tW-rs-Sf2"/>
                         <outlet property="petImage" destination="G6J-eR-RmL" id="bdi-tZ-yDn"/>
                         <outlet property="porteTextField" destination="mqH-HK-wvf" id="bsk-dK-oi6"/>
+                        <outlet property="scrollViewTopConstraint" destination="RxS-1Q-Won" id="1N3-em-jpS"/>
                         <outlet property="tipoTextField" destination="IAg-r2-TTr" id="AuO-Tx-mlt"/>
+                        <outlet property="titleLabel" destination="ndi-Bi-DYM" id="8LB-5T-jLf"/>
+                        <outlet property="topViewHeightConstraint" destination="Dmt-xT-qi0" id="Cgu-3T-4jo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QL3-16-OKP" userLabel="First Responder" sceneMemberID="firstResponder"/>

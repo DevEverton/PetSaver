@@ -16,13 +16,19 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
     @IBOutlet weak var generoTextField: UITextField!
     @IBOutlet weak var porteTextField: UITextField!
     @IBOutlet weak var idadeTextField: UITextField!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var textViewinputText = ""
+    var lastContentOffset: CGFloat = 0
+
     var tipoPicker = UIPickerView()
     var generoPicker = UIPickerView()
     var portePicker = UIPickerView()
     var idadePicker = UIPickerView()
+    
     
     let tipo = ["Cão", "Gato"]
     let genero = ["Macho", "Fêmea"]
@@ -31,10 +37,13 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.removeTabbarItemsText()
         setupTextView()
-        
+        setUpPickerViews()
+
+    }
+
+    func setUpPickerViews() {
         pickerViewDelegate(tipoPicker)
         pickerViewDelegate(generoPicker)
         pickerViewDelegate(portePicker)
@@ -49,7 +58,7 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
         changeColor(of: generoPicker, to: .white)
         changeColor(of: portePicker, to: .white)
         changeColor(of: idadePicker, to: .white)
-
+        
     }
     
     func changeColor(of pickerView: UIPickerView, to color: UIColor) {
@@ -85,6 +94,34 @@ class CadastrarVC: UIViewController, UITextViewDelegate, UIPickerViewDataSource,
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (self.lastContentOffset < scrollView.contentOffset.y) {
+            // moved to top
+            UIView.animate(withDuration: 0.5, animations: {
+                self.topViewHeightConstraint.constant = 20
+                self.scrollViewTopConstraint.constant = 0
+                self.titleLabel.text = ""
+                self.view.layoutIfNeeded()
+            })
+        } else if (self.lastContentOffset > scrollView.contentOffset.y) {
+            // moved to bottom
+            UIView.animate(withDuration: 0.5, animations: {
+                self.topViewHeightConstraint.constant = 70
+                self.scrollViewTopConstraint.constant = 46
+                self.titleLabel.text = "Cadastrar"
+                self.view.layoutIfNeeded()
+                
+            })
+            
+        } else {
+            // didn't move
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

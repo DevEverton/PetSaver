@@ -13,7 +13,7 @@ private let cellIdentifier = "petCell"
 class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var topViewHeighConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
     
     var lastContentOffset: CGFloat = 0
@@ -39,7 +39,6 @@ class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let petCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PetCell
         
         petCell.backgroundColor = .white
-        petCell.layer.cornerRadius = 8
         petCell.userName.text = "Carla Lisboa"
         petCell.userLocation.text = "Parauapebas - PA"
         petCell.userProfilePicture.image = #imageLiteral(resourceName: "perfilCarla").circle
@@ -59,14 +58,14 @@ class PetsVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         if (self.lastContentOffset < scrollView.contentOffset.y) {
             // moved to top
             UIView.animate(withDuration: 0.5, animations: {
-                self.topViewHeighConstraint.constant = 20
+                self.topViewHeightConstraint.constant = 20
                 self.titleLabel.text = ""
                 self.view.layoutIfNeeded()
             })
         } else if (self.lastContentOffset > scrollView.contentOffset.y) {
             // moved to bottom
             UIView.animate(withDuration: 0.5, animations: {
-                self.topViewHeighConstraint.constant = 70
+                self.topViewHeightConstraint.constant = 70
                 self.titleLabel.text = "Buscar"
                 self.view.layoutIfNeeded()
 
